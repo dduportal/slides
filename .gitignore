@@ -6,3 +6,4 @@ dist/
 packer_cache
 .terraform
 .vagrant
+.release-notes/tmp*
