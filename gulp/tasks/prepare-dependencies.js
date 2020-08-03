@@ -12,8 +12,6 @@ module.exports = function (gulp, plugins, current_config) {
                 .pipe(gulp.dest(revealJsDestDir + '/js/')),
             zenBurnCss = gulp.src(baseRevealJSPath + '/lib/css/zenburn.css')
                 .pipe(gulp.dest(revealJsDestDir + '/lib/css/')),
-            headMinJs = gulp.src(baseRevealJSPath + '/lib/js/head.min.js')
-                .pipe(gulp.dest(revealJsDestDir + '/lib/js/')),
             notesJs = gulp.src(baseRevealJSPath + '/plugin/notes/notes.js')
                 .pipe(gulp.dest(revealJsDestDir + '/plugin/notes/')),
             markedJs = gulp.src(baseRevealJSPath + '/plugin/markdown/marked.js')
@@ -28,7 +26,6 @@ module.exports = function (gulp, plugins, current_config) {
             paperCSS,
             mainRevealJs,
             zenBurnCss,
-            headMinJs,
             notesJs,
             notesHtml,
             zoomJs,
@@ -41,7 +38,7 @@ module.exports = function (gulp, plugins, current_config) {
     // so.. reusing. cf. https://github.com/hakimel/reveal.js/#dependencies
     /////////////////
     gulp.task('prepare:highlightjs', function () {
-        var highlightNodeModule = current_config.nodeModulesDir + '/highlightjs',
+        var highlightNodeModule = current_config.nodeModulesDir + '/highlight.js',
             highlightDestDir = current_config.distDir + '/reveal.js/plugin/highlight',
             highlightjsStyleRename = gulp.src(highlightNodeModule + '/styles/*.css')
                 .pipe(plugins.rename(function (path) {
@@ -49,11 +46,10 @@ module.exports = function (gulp, plugins, current_config) {
                     path.basename += ".min";
                 }))
                 .pipe(gulp.dest(highlightDestDir + '/styles/')),
-            highlightScriptMinified = gulp.src(highlightNodeModule + '/highlight.pack.min.js')
-                .pipe(plugins.rename('highlight.js'))
+            highlightScript = gulp.src(highlightNodeModule + '/lib/highlight.js')
                 .pipe(gulp.dest(highlightDestDir));
 
-        return plugins.mergeStreams(highlightjsStyleRename, highlightScriptMinified);
+        return plugins.mergeStreams(highlightjsStyleRename, highlightScript);
 
     });
 
