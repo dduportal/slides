@@ -1,0 +1,38 @@
+= Docker CLI
+
+== Client / Server
+
+[source,bash]
+--
+which docker
+docker --version
+docker info
+curl --unix-socket /var/run/docker.sock http://containers/containers/json
+--
+
+== Docker on Docker
+
+image::dond.jpg[]
+
+== Exercise: Docker on Docker
+
+[source,bash]
+--
+docker run -v /var/run/docker.sock:/var/run/docker.sock:rw -ti alpine
+/ # apk add --no-cache curl docker
+/ # curl --unix-socket /var/run/docker.sock http://containers/containers/json
+--
+
+== Docker in Docker
+
+image::dind.jpg[]
+
+== Exercise: Docker in Docker
+
+[source,bash]
+--
+docker run --rm --name=dind --privileged docker:dind
+docker exec -ti dind bash
+/ # docker info
+/ # docker ps
+--

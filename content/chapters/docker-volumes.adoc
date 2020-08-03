@@ -1,0 +1,119 @@
+= Docker Volumes
+
+== Images Layers
+
+image::docker-layers.png[width=800]
+
+== Exercise: Image with a Dockerfile
+
+[source,bash]
+--
+$ cat Dockerfile
+FROM alpine:3.12
+RUN apk add --no-cache sl
+ENTRYPOINT ["sl"]
+
+$ docker build -t sl:auto ./
+$ docker run --rm -t sl:auto
+--
+
+== Exercise: Image by Hand
+
+Build the SAME image without a Dockerfile
+
+[source,bash]
+--
+$ docker run -ti alpine:3.12
+# ...
+$ docker commit ...
+$ docker run --rm -t sl:manual
+--
+
+== Challenges with Layers
+
+* Layer tracking is costly when doing a lot of I/O operations
+
+* Concurency concern: what if you commit while writing?
+
+* By essence, containers are ephemeral and considered as immutables:
+  what about the mutable persistent data?
+
+== Docker Volumes
+
+* A volume is a set of data which lifecycle differs from a container. For instance: database data, cache, customer files...
+
+* A volume is implented through a driver:
+** Default is `local`, which is a link:https://man7.org/linux/man-pages/man8/mount.8.html["bind-mount"] (host-native performances)
+** tmpfs, NFS/SMB, https://docs.docker.com/engine/extend/legacy_plugins/#volume-plugins
+
+== Exercise with Volumes: Basics
+
+[source,bash]
+--
+docker run --rm -ti alpine
+/ # mkdir -p /data
+/ # echo "Hello" > /data/hello.txt
+/ # exit
+## hello.txt is lost because of --rm
+
+docker volume ls
+docker volume create customer-data
+docker volume ls
+
+docker run --rm -ti --volume=customer-data:/data alpine
+/ # echo "Hello" > /data/hello.txt
+/ # exit
+## hello.txt still exists: find it on the Docker VM and/or with another container
+--
+
+== Exercise with Volumes: Sharing between containers
+
+[source,bash]
+--
+docker volume create shared-data
+docker run --rm -ti --volume=shared-data:/data alpine
+/ # echo "SuperAdmin" > /data/root.txt
+docker run --rm -t --volume=shared-data:/data jenkins/jenkins:2.235.5-alpine bash
+bash-5.0$ cat /data/root.txt
+bash-5.0$ rm -f /data/root.txt
+bash-5.0$ ls -l /data/root.txt
+--
+
+
+== Exercise with Volumes: Anonymous Volumes
+
+[source,bash]
+--
+$ cat Dockerfile
+FROM alpine:3.12
+WORKDIR /data
+VOLUME ["/data"]
+ENTRYPOINT ["echo","bonjour",">","/data/bonjour.txt"]
+$ docker build -t ano ./
+
+$ docker volume ls
+$ docker run ano
+$ docker volume ls
+--
+
+== Exercise with Volumes: Read-Only volume
+
+[source,bash]
+--
+docker volume create shared-data
+docker run --rm -ti --volume=shared-data:/data:rw alpine
+/ # echo "GuttenTag" > /data/de.txt
+docker run --rm -ti --volume=shared-data:/data:ro alpine
+/ # cat /data/de.txt
+/ # ls -l /data/de.txt
+/ # rm -f /data/root.txt
+--
+
+== Exercise with Volumes: tmpfs
+
+[source,bash]
+--
+docker run --rm -ti --tmpfs=/temp_data alpine
+/ # echo "SuperAdmin" > /temp_data/root.txt
+/ #  df -h
+--

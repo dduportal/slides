@@ -1,0 +1,54 @@
+= Prerequisites from Docker Level 1
+
+== Container vs. Image
+
+* What is the difference between a container and an image?
+* What is the link between image and container?
+
+[.notes]
+--
+* A container can be seen a "lightweight" virtual machine (we'll se later it's nothing like a VM), with a single process in mind.
+** Its goal is to ease packaging of an application with its dependencies, without depending on the host setup except for the kernel.
+
+* An image is an immutable file system snapshot. It's basically a "tar.gz" archive with special (layered) content.
+** It's used as a source for starting a container, by providing a complete file system (OS, packages, libs)
+
+--
+
+== Container
+
+* How to run a container?
+* Container lifecycle? How to check for running containers? And stoped containers?
+* Difference between `-it` and `-d`?
+* How to access a running container?
+
+[.notes]
+--
+* 2 command lines:
+** `docker run` (legacy one)
+** `docker container create` (new one with semantic meaning)
+
+* A container stops when its main process stops. You can `docker stop` or `docker kill` to send a signal (SIGTERM or SIGKILL).
+** `docker ps` / `docker container ls`
+** `docker ps -a` / `docker container -a` , where `-a` stands for "all"
+
+* Interactive process means "allocate a console + connect stdin(0), stdout (1) and stderr(2) from the host",
+  while Daemonized means "run in background"
+
+* `docker exec (-ti) <container id> <command>`
+--
+
+== Image
+
+* How to list images?
+* Imane naming? Where to check these image?
+* How to build and image?
+
+[.notes]
+--
+* `docker images` / `docker image ls`
+
+* Name:`REPOSITORY:TAG`. Docker registry to host and share images (`docker pull` / `docker push`)
+
+* `Dockerfile` with its "KEY VALUE" syntax, and use the command `docker build`
+--
