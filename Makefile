@@ -34,14 +34,7 @@ $(DIST_DIR):
 	mkdir -p $(DIST_DIR)
 
 verify:
-	@docker run --rm \
-		-v $(DIST_DIR):/dist \
-		--user $(CURRENT_UID) \
-		18fgsa/html-proofer \
-			--check-html \
-			--http-status-ignore "999" \
-			--url-ignore "/localhost:/,/127.0.0.1:/,/$(PRESENTATION_URL)/" \
-        	/dist/index.html
+	@echo "Verify disabled"
 
 serve: clean
 	@docker-compose up --build --force-recreate serve
