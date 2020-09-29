@@ -1,6 +1,6 @@
 
 
-= INTRODUCTION À L'APPROCHE AGILE
+= Introduction à l'approche agile
 include::./attributes.adoc[]
 
 [.small]
