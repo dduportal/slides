@@ -36,10 +36,10 @@ $(DIST_DIR):
 verify:
 	@echo "Verify disabled"
 
-serve: clean
+serve: clean $(DIST_DIR)
 	@docker-compose up --build --force-recreate serve
 
-shell:
+shell: $(DIST_DIR)
 	@docker-compose up --build --force-recreate -d wait
 	@docker-compose exec --user root wait sh
 

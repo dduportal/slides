@@ -1,65 +1,159 @@
-[%notitle]
-= Tests de bout en bout en shell avec “bats”, pour CLI, containers et clusters
+
+
+= SÉCURITÉ DU NUMÉRIQUE
 include::./attributes.adoc[]
 
-[{invert}]
-== Tests de bout en bout en shell avec “bats”
-
-pour CLI, containers et clusters
-
-image::gdg-lille.png["GDG Lille",height=300]
+image::qrcode.png["QRCode to this presentation",height=150]
 
 [.small]
 Présentation disponible à l’URL: {presentationUrl}[{presentationUrl}]
 
-== Comment utiliser cette présentation ?
-
-* Pour naviguer, utilisez les flèches en bas à droite (ou celles de votre clavier)
-** Gauche/Droite: changer de chapitre
-** Haut/Bas: naviguer dans un chapitre
-* Pour avoir une vue globale : utiliser la touche "kbd:[o]" (pour "*Overview*")
-* Pour voir les notes de l'auteur : utilisez la touche "kbd:[s]" (pour "*Speaker* notes")
-
-// //// Speaker Slide and Company slide
 [{invert}]
-== Whoami
+== Damien DUPORTAL
 
-* Damien DUPORTAL:
-** link:https://traefik.io/[Træfik,window=_blank]'s Developer 🥑 Advocate @
-link:https://containo.us/[Containous,window=_blank] and Freelancer
-** Former Training Engineer @ CloudBees
+// image::damien-duportal-2.jpg[height=200, align=left]
+* Freelancer
+* Consultant @ link:https://www.ovh.com/fr/[OVHCloud]
 
-* link:https://twitter.com/DamienDuportal[icon:twitter[] @DamienDuportal,window=_blank]
-* link:https://github.com/dduportal[icon:github[] dduportal,window=_blank]
+* Me contacter :
+** icon:envelope[] damien.duportal+pro <chez> gmail.com
+** link:https://twitter.com/DamienDuportal[icon:twitter[] @DamienDuportal,window=_blank]
+** link:https://github.com/dduportal[icon:github[] dduportal,window=_blank]
 
-image::damien.jpg[height=200]
-// //// end of Speaker Slide and Company slide
+== Au Menu
 
-== Menu
+1. Enjeux de la sécurité numérique
+2. Un tour d'horizon des différents menaces
+3. Comment se protéger ?
 
-* Tester une CLI
+== Enjeux de la sécurité numérique
 
-* Tester des containeurs
+== Transformation Numérique
+// Enjeux de la sécurité numérique
+* Tout le monde fait sa transformation numérique...
+* Même les organisations criminelles !
 
-* Tests de bout en bout: Kezako ?
+== Coût de la Cybercriminalité
+// Enjeux de la sécurité numérique
 
-* Tester une application complexe
+* 2014 en 🇧🇪 : **3,5 Milliards 💶**
+* 2014 -> 2017 dans le 🌎 : **~380 Milliards -> 510 Milliards 💶**
+* 2017 en 🇧🇪 : **4%** des cas -  **>= 10 000 💶** par attaque
+* 2020: Covid-19...
 
-:leveloffset: +1
+== Pourquoi Moi ?
+// Enjeux de la sécurité numérique
 
-// = Tester une CLI
-include::./includes/tester-cli.adoc[]
+* 2018 -> 2019 en 🇧🇪: **+30%** de plaintes
+* 2019 en 🇧🇪 :
+** **2/3** des entreprises
+** Domaines touchés variés, de la startup aux hopitaux...
+* Facilité des piratages, industrialisation à grande échelle
 
-// = Tester des containeurs
-include::./includes/tester-containeurs.adoc[]
+== Impacts
 
-// = Tests de bout en bout: Kezako ?
-include::./includes/bout-en-bout.adoc[]
+* Perte d'activité
+* Perte de chiffre d'affaire (rançons, amendes, détournement, coût des contre-mesures)
+// ** Impossibilité de rendre un service (site, boutique en ligne, etc.)
+// ** Destruction de données
+* Image de marque :
+// ** **Vol** et diffusuion de données
+// ** Défacement
+* Intelligence et espionnage économiques
+* Responsabilité pénale
 
-// = Tester une application complexe
-include::./includes/tester-app.adoc[]
+== Un tour d'horizon des différents menaces
 
-:leveloffset: -1
+== Rançongiciel
+
+(aka. "Ransomware")
+
+- Un programme malveillant ☠️ sur vos ordinateurs/serveurs 🖥
+- Chiffre les données ou bloque le système 🚪
+- Déchiffrement ou déblocage contre paiement d'une rançon 💸
+
+
+== Chantage
+
+- Variante du Rançongiciel
+- Vol des informations **personnelles** ou **confidentielles** 👀
+- Chantage à la publication 💸
+
+== Déni de service
+
+(aka. "DDos")
+
+image::crowded-brussels.jpg[width=300]
+
+- Surcharge de site par envoi de millions de requêtes
+
+== Hameçonnage
+
+(aka. "Pishing")
+
+- Un email ou SMS invite à s'identifier et/ou payer sur un site 🔏
+- Ledit site est une (+ ou - bonne) copie de l'original 👯‍♂️
+- But: usurpation d'identité 💳 ou vol d'information bancaires 💸
+
+== "Homme Au Milieu"
+
+(aka. "Man in the Middle")
+
+image::man-in-the-middle-mitm-attack.png[]
+
+== Comment se protéger ?
+
+== Pas de protection absolue !
+
+== !
+
+image::usb-stick.png[width=400]
+
+== !
+
+image::stuxnet.jpg[background, size=cover]
+
+== Evaluer la menace et les réponses
+
+- Menaces Extérieures ? Intérieures ?
+- Risques pour chaque attaque ?
+
+== Demander de l'aide
+
+CERT (Federal Cyber Emergency Team):
+
+https://cert.be/fr[]
+
+== Restez à jour !
+
+image::windows-update.png[]
+
+== Mots de Passes
+
+- Complexité et rotations
+
+image::https://imgs.xkcd.com/comics/password_strength.png[width=600]
+
+[.small]
+https://imgs.xkcd.com/comics/password_strength.png[]
+
+== Authentification Multi Facteurs
+
+(aka. "MFA" ou "2FA")
+
+image::mfa_workflow.png[width=400]
+
+image::yubikey.jpg[width=300]
+
+== Protégez et Formez
+
+- Protégez vous
+- Protégez vos employés et partenaires
+- Pour mieux protéger vos clients et vos intérêts
+
+== GDPR
+
+Guerre économique : 🇪🇺 vs. 🇺🇸 vs. 🇨🇳 vs. 🇷🇺
 
 [{invert}]
 == Merci !
