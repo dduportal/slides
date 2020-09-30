@@ -6,6 +6,8 @@ module.exports = function (gulp, plugins, current_config) {
             revealJsDestDir = current_config.distDir + '/reveal.js',
             mainRevealCss = gulp.src(baseRevealJSPath + '/css/reveal.css')
                 .pipe(gulp.dest(revealJsDestDir + '/css/')),
+            resetCss = gulp.src(baseRevealJSPath + '/css/reset.css')
+                .pipe(gulp.dest(revealJsDestDir + '/css/')),
             paperCSS = gulp.src(baseRevealJSPath + '/css/print/paper.css')
                 .pipe(gulp.dest(revealJsDestDir + '/css/print')),
             mainRevealJs = gulp.src(baseRevealJSPath + '/js/reveal.js')
@@ -29,7 +31,8 @@ module.exports = function (gulp, plugins, current_config) {
             notesJs,
             notesHtml,
             zoomJs,
-            markedJs
+            markedJs,
+            resetCss
         );
     });
 
@@ -63,5 +66,35 @@ module.exports = function (gulp, plugins, current_config) {
             .pipe(gulp.dest(current_config.distDir + '/fonts/'));
 
         return plugins.mergeStreams(fontAwesomeCss, fontAwesomeFonts);
+    });
+
+    ////////////////////////////// Managing RevelaJS Menu Plugin and dependencies
+    gulp.task('prepare:revealjs-plugins', function () {
+        var revealjsPluginsLoaderContent = '',
+            revealjsPluginsDirs = [];
+
+        current_config.revealjsPlugins.forEach(function(revealjsPluginName) {
+
+            // Append plugin to the loader list
+            // Note that revelajs plugins follow a naming convention for the "main" JS file.
+            revealjsPluginsLoaderContent +=
+                "{ src: 'reveal.js/plugin/" + revealjsPluginName +
+                "/" + revealjsPluginName.split("-")[1] + ".js'},\n";
+
+            revealjsPluginsDirs.push(current_config.nodeModulesDir + '/' + revealjsPluginName + '/**/*')
+
+        } );
+
+        // Write plugin list to file system
+        plugins.fs.writeFile(current_config.revealJSPluginListFile, revealjsPluginsLoaderContent, function() {});
+
+        // Copy plugins contents from nodes_modules
+        return gulp.src(
+            revealjsPluginsDirs,
+            {
+                base: current_config.nodeModulesDir
+            }
+        )
+        .pipe(gulp.dest(current_config.distDir + '/reveal.js/plugin/'));
     });
 };

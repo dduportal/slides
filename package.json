@@ -5,7 +5,9 @@
     "repository": "https://github.com/dduportal/slides",
     "dependencies": {
         "highlight.js": "^10.1.2",
-        "font-awesome": "^4.7.0"
+        "font-awesome": "^4.7.0",
+        "reveal.js-menu": "1.2.0",
+        "reveal.js-toolbar": "0.2.1"
     },
     "devDependencies": {
         "asciidoctor": "^2.2.0",
