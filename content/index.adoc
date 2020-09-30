@@ -3,77 +3,37 @@
 include::./attributes.adoc[]
 
 [.small]
-Présentation disponible à l’URL: {presentationUrl}[{presentationUrl}]
+Présentation disponible à l’URL: link:{presentationUrl}[{presentationUrl}]
 
-== Au Menu
+image::qrcode.png["QRCode to this presentation",height=300]
 
-1. Quel sont les problèmes de la gestion de projet ?
-2. Approches et méthodes Agiles dans le numérique
-3. Quelques exemples concrets
+[.small]
+Présentation disponible en PDF: {presentationUrl}/slides.pdf[{presentationUrl}/slides.pdf]
 
-== Quel sont les problèmes de la gestion de projet ?
+== Comment utiliser cette présentation ?
 
-== Transformation Numérique
-// Enjeux de la sécurité numérique
-* Tout le monde fait sa transformation numérique...
-* Même les organisations criminelles !
+* Pour naviguer, utilisez les flèches en bas à droite (ou celles de votre clavier)
+** Gauche/Droite: changer de chapitre
+** Haut/Bas: naviguer dans un chapitre
+* Pour avoir une vue globale : utiliser la touche "kbd:[o]" (pour "*Overview*")
+* Pour voir les notes de l'auteur : utilisez la touche "kbd:[s]" (pour "*Speaker* notes")
 
-== Coût de la Cybercriminalité
-// Enjeux de la sécurité numérique
-
-* 2014 en 🇧🇪 : **3,5 Milliards 💶**
-* 2014 -> 2017 dans le 🌎 : **~380 Milliards -> 510 Milliards 💶**
-* 2017 en 🇧🇪 : **4%** des cas -  **>= 10 000 💶** par attaque
-* 2020: Covid-19...
-
-== Pourquoi Moi ?
-// Enjeux de la sécurité numérique
-
-* 2018 -> 2019 en 🇧🇪: **+30%** de plaintes
-* 2019 en 🇧🇪 :
-** **2/3** des entreprises
-** Domaines touchés variés, de la startup aux hopitaux...
-* Facilité des piratages, industrialisation à grande échelle
-
-
-== Impacts
-
-* Sites inaccessibles
-* Systèmes inopérants
-* Données perdues
-* Données volées
-* Sites "défacées"
-
-== Conséquences
-
-* Perte d'activité ❌ et de chiffre d'affaire 💸
-* Image de marque 🌧
-* Intelligence et espionnage économiques 🕵️‍♂️
-* Responsabilité pénale ⚖️
-
-== Un tour d'horizon des différents menaces
-
-== Rançongiciel
-
-(aka. "Ransomware")
-
-- Un programme malveillant ☠️ sur vos ordinateurs/serveurs 🖥
-- Chiffre les données ou bloque le système 🚪
-- Déchiffrement ou déblocage contre paiement d'une rançon 💸
-
-
-== Chantage
+// //// Speaker Slide and Company slide
+[{invert}]
+== Whoami
 
 * Damien DUPORTAL:
 ** 🛠 Tooling  Engineer at OpenIO-OVH & Freelancer
 ** 🥑 Former Traefik's Developer Advocate @ Containous
 ** 👨‍🏫 Former Jenkins' Training Engineer @ CloudBees
 
-== Déni de service
+* +++<span class="fa fa-envelope"></span>+++ damien.duportal+pro <chez> gmail.com
+* link:https://twitter.com/DamienDuportal[+++<span class="fa fab-twitter"></span>+++ @DamienDuportal,window=_blank]
+* link:https://github.com/dduportal[+++<span class="fab fa-github"></span>+++ dduportal,window=_blank]
 
 // //// end of Speaker Slide and Company slide
 
-image::crowded-brussels.jpg[width=300]
+== Menu
 
 * Prerequisites from Level 1
 
@@ -83,7 +43,7 @@ image::crowded-brussels.jpg[width=300]
 
 * Docker CLI
 
-== En résumé
+:leveloffset: +1
 
 include::./chapters/prerequisites.adoc[]
 
@@ -93,52 +53,7 @@ include::./chapters/docker-volumes.adoc[]
 
 include::./chapters/docker-cli.adoc[]
 
-[.small]
-https://agilemanifesto.org/iso/fr/manifesto.html[]
-
-== Produit Minimum Viable
-
-(aka. "MVP" - "Minimum Viable Product")
-
-image::mvp.png[width=700]
-
-== Approche Agile
-
-image::agile.png[width=800]
-
-== Quelques exemples concrets
-
-== SCRUM
-
-image::scrum.jpg[]
-
-== Kanban
-
-image::kanban.jpg[width=800]
-
-== Concept Ecologis (!)
-
-(aka. "Faire de l'Agile sans le savoir")
-
-image::concept-ecologis.jpg[width=800]
-
-[.small]
-https://concept-ecologis.be/[]
-
-== Interessés ?
-
-image::arexo-logo.png[]
-
-Basés à St-Georges-sur-Meuse : link:https://arexo.be/[]
-
-== Sources
-
-- https://arexo.be/
-- https://blog.trello.com/fr/methode-agile-scrum-gestion-projet
-- https://fr.wikipedia.org/wiki/M%C3%A9thode_agile
-- https://slideplayer.fr/slide/14372463/
-- https://agileforall.com/resources/introduction-to-agile/
-- https://agiliste.fr/introduction-methodes-agiles/
+:leveloffset: -1
 
 [{invert}]
 == Merci !
@@ -146,8 +61,6 @@ Basés à St-Georges-sur-Meuse : link:https://arexo.be/[]
 +++<span class="fa fa-envelope"></span>+++ damien.duportal+pro <chez> gmail.com
 
 link:https://twitter.com/DamienDuportal[+++<span class="fab fa-twitter"></span>+++ @DamienDuportal,window=_blank]
-
-link:https://www.linkedin.com/in/damien-duportal-ab70b524/[+++<span class="fab fa-linkedin"></span>+++ Damien Duportal,window=_blank]
 
 [.small]
 link:{presentationUrl}[Slides: {presentationUrl}]
