@@ -22,6 +22,7 @@ var tasks_dir_path = './tasks',
         docinfosPath: '/app/content/docinfos',
         imgSrcPath: '/app/content/images',
         videosSrcPath: '/app/content/videos',
+        scriptsSrcPath: '/app/assets/scripts',
         stylesSrcPath: '/app/assets/styles',
         fontSrcPath: '/app/assets/fonts',
         faviconPath: '/app/content/favicon.ico',
@@ -31,6 +32,8 @@ var tasks_dir_path = './tasks',
         listen_ip: process.env.LISTEN_IP || '0.0.0.0',
         listen_port: process.env.LISTEN_PORT || 8000,
         livereload_port: process.env.LIVERELOAD_PORT || 35729,
+        revealjsPlugins: ["reveal.js-menu","reveal.js-toolbar"],
+        revealJSPluginListFile: '/tmp/revealjs-plugins-list.js',
     };
 plugins.asciidoctorRevealjs.register();
 
@@ -49,6 +52,7 @@ gulp.task('build', gulp.series(
         'prepare:revealjs',
         'prepare:highlightjs',
         'prepare:fontawesome',
+        'prepare:revealjs-plugins',
         'styles'
     ),
     'html'

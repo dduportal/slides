@@ -16,9 +16,10 @@ Présentation disponible à l’URL: {presentationUrl}[{presentationUrl}]
 * Consultant @ link:https://www.ovh.com/fr/[OVHCloud]
 
 * Me contacter :
-** icon:envelope[] damien.duportal+pro <chez> gmail.com
-** link:https://twitter.com/DamienDuportal[icon:twitter[] @DamienDuportal,window=_blank]
-** link:https://github.com/dduportal[icon:github[] dduportal,window=_blank]
+** +++<span class="fa fa-envelope"></span>+++ damien.duportal+pro <chez> gmail.com
+** link:https://www.linkedin.com/in/damien-duportal-ab70b524/[+++<span class="fab fa-linkedin"></span>+++ Damien Duportal,window=_blank]
+** link:https://twitter.com/DamienDuportal[+++<span class="fab fa-twitter"></span>+++ @DamienDuportal,window=_blank]
+
 
 == Au Menu
 
@@ -158,9 +159,11 @@ Guerre économique : 🇪🇺 vs. 🇺🇸 vs. 🇨🇳 vs. 🇷🇺
 [{invert}]
 == Merci !
 
-link:https://twitter.com/DamienDuportal[icon:twitter[] @DamienDuportal]
++++<span class="fa fa-envelope"></span>+++ damien.duportal+pro <chez> gmail.com
 
-link:https://github.com/dduportal[icon:github[] dduportal]
+link:https://twitter.com/DamienDuportal[+++<span class="fab fa-twitter"></span>+++ @DamienDuportal,window=_blank]
+
+link:https://www.linkedin.com/in/damien-duportal-ab70b524/[+++<span class="fab fa-linkedin"></span>+++ Damien Duportal,window=_blank]
 
 [.small]
 link:{presentationUrl}[Slides: {presentationUrl}]
@@ -168,4 +171,4 @@ link:{presentationUrl}[Slides: {presentationUrl}]
 image::qrcode.png["QRCode to this presentation",height=150]
 
 [.small]
-link:{repositoryUrl}[Source on icon:github[]: {repositoryUrl}]
+link:{repositoryUrl}[Source on +++<span class="fab fa-github"></span>+++: {repositoryUrl}]
