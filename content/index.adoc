@@ -1,6 +1,6 @@
 
 
-= Sécurité dans le Numérique
+= Introduction à l'approche "Agile"
 include::./attributes.adoc[]
 
 [.small]
@@ -14,7 +14,6 @@ Présentation disponible en PDF: {presentationUrl}/slides.pdf[{presentationUrl}/
 [{invert}]
 == Damien DUPORTAL
 
-// image::damien-duportal-2.jpg[height=200, align=left]
 * Freelancer
 * Consultant @ link:https://www.ovh.com/fr/[OVHCloud]
 
@@ -26,150 +25,81 @@ Présentation disponible en PDF: {presentationUrl}/slides.pdf[{presentationUrl}/
 
 == Au Menu
 
-1. Enjeux de la sécurité numérique
-2. Un tour d'horizon des différents menaces
-3. Comment se protéger ?
+1. Quel sont les problèmes de la gestion de projet ?
+2. Approches et méthodes Agiles dans le numérique
+3. Quelques exemples concrets
 
-== Enjeux de la sécurité numérique
-
-== Transformation Numérique
-// Enjeux de la sécurité numérique
-* Tout le monde fait sa transformation numérique...
-* Même les organisations criminelles !
-
-== Coût de la Cybercriminalité
-// Enjeux de la sécurité numérique
-
-* 2014 en 🇧🇪 : **3,5 Milliards 💶**
-* 2014 -> 2017 dans le 🌎 : **~380 Milliards -> 510 Milliards 💶**
-* 2017 en 🇧🇪 : **4%** des cas -  **>= 10 000 💶** par attaque
-* 2020: Covid-19...
-
-== Pourquoi Moi ?
-// Enjeux de la sécurité numérique
-
-* 2018 -> 2019 en 🇧🇪: **+30%** de plaintes
-* 2019 en 🇧🇪 :
-** **2/3** des entreprises
-** Domaines touchés variés, de la startup aux hopitaux...
-* Facilité des piratages, industrialisation à grande échelle
-
-
-== Impacts
-
-* Sites inaccessibles
-* Systèmes inopérants
-* Données perdues
-* Données volées
-* Sites "défacées"
-
-== Conséquences
-
-* Perte d'activité ❌ et de chiffre d'affaire 💸
-* Image de marque 🌧
-* Intelligence et espionnage économiques 🕵️‍♂️
-* Responsabilité pénale ⚖️
-
-== Un tour d'horizon des différents menaces
-
-== Rançongiciel
-
-(aka. "Ransomware")
-
-- Un programme malveillant ☠️ sur vos ordinateurs/serveurs 🖥
-- Chiffre les données ou bloque le système 🚪
-- Déchiffrement ou déblocage contre paiement d'une rançon 💸
-
-
-== Chantage
-
-- Variante du Rançongiciel
-- Vol des informations **personnelles** ou **confidentielles** 👀
-- Chantage à la publication 💸
-
-== Déni de service
-
-(aka. "DDos")
-
-image::crowded-brussels.jpg[width=300]
-
-- Surcharge de site par envoi de millions de requêtes
-
-== Hameçonnage
-
-(aka. "Pishing")
-
-- Un email ou SMS invite à s'identifier et/ou payer sur un site 🔏
-- Ledit site est une (+ ou - bonne) copie de l'original 👯‍♂️
-- But: usurpation d'identité 💳 ou vol d'information bancaires 💸
-
-== "Homme Au Milieu"
-
-(aka. "Man in the Middle")
-
-image::man-in-the-middle-mitm-attack.png[]
-
-== Comment se protéger ?
-
-== Pas de protection absolue !
+== Quel sont les problèmes de la gestion de projet ?
 
 == !
 
-image::usb-stick.png[width=400]
+image::submarine.jpg[width=500]
 
-== !
+image::tunnel.jpg[width=500]
 
-image::stuxnet.jpg[background, size=cover]
+== Le cycle en V
 
-== Evaluer la menace et les réponses
+image::cycle-v.jpg[width=800]
 
-- Menaces Extérieures ? Intérieures ?
-- Risques pour chaque attaque ?
+== En résumé
 
-== Demander de l'aide
+image::what-customer-want.jpg[]
 
-CERT (Federal Cyber Emergency Team):
+== Approches et méthodes Agiles dans le numérique
 
-https://cert.be/fr[]
+== Manifeste Agile
 
-== Restez à jour !
-
-image::windows-update.png[]
-
-== Mots de Passes
-
-- Complexité et rotations
-
-image::https://imgs.xkcd.com/comics/password_strength.png[width=600]
+- **Individus et interactions** plus que processus outils
+- **Logiciels opérationnels** plus qu’une documentation exhaustive
+- **Collaboration** avec les clients plus que la négociation contractuel
+- **Adaptation au changement** plus que le suivi d’un plan
 
 [.small]
-https://imgs.xkcd.com/comics/password_strength.png[]
+https://agilemanifesto.org/iso/fr/manifesto.html[]
 
-== Authentification Multi Facteurs
+== Produit Minimum Viable
 
-(aka. "MFA" ou "2FA")
+(aka. "MVP" - "Minimum Viable Product")
 
-image::mfa_workflow.png[width=400]
+image::mvp.png[width=700]
 
-image::yubikey.jpg[width=300]
+== Approche Agile
 
-== Protégez et Formez
+image::agile.png[width=800]
 
-- Protégez vous
-- Protégez vos employés et partenaires
-- Pour mieux protéger vos clients et vos intérêts
+== Quelques exemples concrets
 
-== GDPR
+== SCRUM
 
-Guerre économique : 🇪🇺 vs. 🇺🇸 vs. 🇨🇳 vs. 🇷🇺
+image::scrum.jpg[]
+
+== Kanban
+
+image::kanban.jpg[width=800]
+
+== Concept Ecologis (!)
+
+(aka. "Faire de l'Agile sans le savoir")
+
+image::concept-ecologis.jpg[width=800]
+
+[.small]
+https://concept-ecologis.be/[]
+
+== Interessés ?
+
+image::arexo-logo.png[]
+
+Basés à St-Georges-sur-Meuse : link:https://arexo.be/[]
 
 == Sources
 
-- https://www.accenture.com/fr-fr/insight-cost-of-cybercrime-2017
-- https://www.feb.be/domaines-daction/securite--bien-etre-au-travail/securite-des-entreprises/le-cout-du-cybercrime-en-belgique_2017-12-13/
-- https://www.bdo.be/fr-be/actualites/2019/les-fraudes-coutent-en-moyenne-200%E2%80%89000-euros-aux-entreprises-belges
-- https://www.imperva.com/learn/application-security/man-in-the-middle-attack-mitm/
-- https://www.alphorm.com/tutoriel/formation-en-ligne-scada-cybersecurite-des-systemes-industriels/tuto-video-retours-sur-experience-le-malware-stuxnet
+- https://arexo.be/
+- https://blog.trello.com/fr/methode-agile-scrum-gestion-projet
+- https://fr.wikipedia.org/wiki/M%C3%A9thode_agile
+- https://slideplayer.fr/slide/14372463/
+- https://agileforall.com/resources/introduction-to-agile/
+- https://agiliste.fr/introduction-methodes-agiles/
 
 [{invert}]
 == Merci !
