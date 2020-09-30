@@ -14,7 +14,6 @@ Présentation disponible en PDF: {presentationUrl}/slides.pdf[{presentationUrl}/
 [{invert}]
 == Damien DUPORTAL
 
-// image::damien-duportal-2.jpg[height=200, align=left]
 * Freelancer
 * Consultant @ link:https://www.ovh.com/fr/[OVHCloud]
 
@@ -87,13 +86,20 @@ image::concept-ecologis.jpg[width=800]
 [.small]
 https://concept-ecologis.be/[]
 
+== Interessés ?
+
+image::arexo-logo.png[]
+
+Basés à St-Georges-sur-Meuse : link:https://arexo.be/[]
+
 == Sources
 
-- https://www.accenture.com/fr-fr/insight-cost-of-cybercrime-2017
-- https://www.feb.be/domaines-daction/securite--bien-etre-au-travail/securite-des-entreprises/le-cout-du-cybercrime-en-belgique_2017-12-13/
-- https://www.bdo.be/fr-be/actualites/2019/les-fraudes-coutent-en-moyenne-200%E2%80%89000-euros-aux-entreprises-belges
-- https://www.imperva.com/learn/application-security/man-in-the-middle-attack-mitm/
-- https://www.alphorm.com/tutoriel/formation-en-ligne-scada-cybersecurite-des-systemes-industriels/tuto-video-retours-sur-experience-le-malware-stuxnet
+- https://arexo.be/
+- https://blog.trello.com/fr/methode-agile-scrum-gestion-projet
+- https://fr.wikipedia.org/wiki/M%C3%A9thode_agile
+- https://slideplayer.fr/slide/14372463/
+- https://agileforall.com/resources/introduction-to-agile/
+- https://agiliste.fr/introduction-methodes-agiles/
 
 [{invert}]
 == Merci !
