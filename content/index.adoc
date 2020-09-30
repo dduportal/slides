@@ -1,12 +1,15 @@
 
 
-= SÉCURITÉ DU NUMÉRIQUE
+= Sécurité dans le Numérique
 include::./attributes.adoc[]
+
+[.small]
+Présentation disponible à l’adresse: {presentationUrl}[{presentationUrl}]
 
 image::qrcode.png["QRCode to this presentation",height=150]
 
 [.small]
-Présentation disponible à l’URL: {presentationUrl}[{presentationUrl}]
+Présentation disponible en PDF: {presentationUrl}/slides.pdf[{presentationUrl}/slides.pdf]
 
 [{invert}]
 == Damien DUPORTAL
@@ -51,17 +54,21 @@ Présentation disponible à l’URL: {presentationUrl}[{presentationUrl}]
 ** Domaines touchés variés, de la startup aux hopitaux...
 * Facilité des piratages, industrialisation à grande échelle
 
+
 == Impacts
 
-* Perte d'activité
-* Perte de chiffre d'affaire (rançons, amendes, détournement, coût des contre-mesures)
-// ** Impossibilité de rendre un service (site, boutique en ligne, etc.)
-// ** Destruction de données
-* Image de marque :
-// ** **Vol** et diffusuion de données
-// ** Défacement
-* Intelligence et espionnage économiques
-* Responsabilité pénale
+* Sites inaccessibles
+* Systèmes inopérants
+* Données perdues
+* Données volées
+* Sites "défacées"
+
+== Conséquences
+
+* Perte d'activité ❌ et de chiffre d'affaire 💸
+* Image de marque 🌧
+* Intelligence et espionnage économiques 🕵️‍♂️
+* Responsabilité pénale ⚖️
 
 == Un tour d'horizon des différents menaces
 
@@ -155,6 +162,14 @@ image::yubikey.jpg[width=300]
 == GDPR
 
 Guerre économique : 🇪🇺 vs. 🇺🇸 vs. 🇨🇳 vs. 🇷🇺
+
+== Sources
+
+- https://www.accenture.com/fr-fr/insight-cost-of-cybercrime-2017
+- https://www.feb.be/domaines-daction/securite--bien-etre-au-travail/securite-des-entreprises/le-cout-du-cybercrime-en-belgique_2017-12-13/
+- https://www.bdo.be/fr-be/actualites/2019/les-fraudes-coutent-en-moyenne-200%E2%80%89000-euros-aux-entreprises-belges
+- https://www.imperva.com/learn/application-security/man-in-the-middle-attack-mitm/
+- https://www.alphorm.com/tutoriel/formation-en-ligne-scada-cybersecurite-des-systemes-industriels/tuto-video-retours-sur-experience-le-malware-stuxnet
 
 [{invert}]
 == Merci !
