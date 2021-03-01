@@ -1,0 +1,105 @@
+= Docker Networks
+
+== Container Default Network
+
+* A container has its own network stack,
+* and is attached to a default private network,
+* with a default gateway, which is the host's `docker0` interface
+
+== Default Network Diagram
+
+image::DockerNet.svg["Docker Default Network", width=700]
+
+== Exercise: Container Default Network
+
+[source,bash]
+--
+docker run --name=web1 --detach nginx:alpine
+
+docker inspect # | grep IPA
+
+curl -v 172.17.0.x # Result ?
+
+docker run --rm -ti alpine
+  apk add --no-cache curl
+  curl -v 172.17.0.x # Result ?
+--
+
+== Host Network
+
+A container can run on the host's network stack:
+
+image::DockerHostNet.svg["Docker Default Network", width=500]
+
+== Exercise: Host Network
+
+[source,bash]
+--
+docker run --name=web2 --network=host --detach nginx:alpine
+
+docker exec -ti web1 ip addr
+# Compare with
+docker exec -ti web2 ip addr
+--
+
+== Docker Networks
+
+Docker allows to manage multiple isolated networks,
+each one with an implementation driver.
+
+Default is a "bridge" driver, but overlay or custom networks can be used (clusters, VLANs, etc.)
+
+
+== Docker Networks Diagram
+
+image::DockerMultipleNet.svg["Docker Default Network", width=800]
+
+== Exercise: Docker Networks
+
+[source,bash]
+--
+docker network ls
+docker network create --attachable --subnet=192.168.0.1/24 backend # Run
+docker network ls
+
+docker run --rm -ti --network=backend alpine
+  ip addr # eth0 ?
+  apk add --no-cache curl
+  curl 172.17.0.x # IP of web1. Result?
+
+docker network connect  backend web1
+docker inspect web1 | grep IPA
+docker exec -ti web1 ip addr
+# Retry the "docker run --rm -ti --network=backend alpine" sequence again now
+--
+
+== Publishing Container Ports
+
+* How to access from the outside?
+** Publish ports with `-p` and `-P`
+
+== Exercise with Publishing Container Ports
+
+[source,bash]
+--
+## For each: do not forget the "negative" testing:
+# - curl with the instance up should work
+# - Stop the instance with docker stop <instance name> and curl should NOT work
+
+docker run -d -p 80:80 --name=web3 nginx:alpine
+# Should be easy curl and docker ports/inspect
+
+docker run -d -P --name=web4 nginx:alpine
+# Search how to reach the published ports with curl and docker ports/inspect
+
+docker run -d -p 80:127.0.0.1:80 --name=web5 nginx:alpine
+# Search how to reach this instance with what we did
+--
+
+== More about Networks to try...
+
+* Container on the same network stack of another container
+* Fixed IP addresses for a container
+* IPv6 support
+* Customisation of the default Docker bridge
+* Docker compose and its networks
