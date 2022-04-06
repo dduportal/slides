@@ -1,24 +1,15 @@
 CURRENT_UID = $(shell id -u):$(shell id -g)
 DIST_DIR ?= $(CURDIR)/dist
-REPOSITORY_NAME ?= slides
-REPOSITORY_OWNER ?= dduportal
-REPOSITORY_BASE_URL ?= https://github.com/$(REPOSITORY_OWNER)/$(REPOSITORY_NAME)
 
-REPOSITORY_URL = $(REPOSITORY_BASE_URL)
-PRESENTATION_URL = https://$(REPOSITORY_OWNER).github.io/$(REPOSITORY_NAME)
+REPOSITORY_URL = https://github.com/dduportal/slides
+PRESENTATION_URL = https://dduportal.github.io/slides/master
 
-ifdef TRAVIS_TAG
-REPOSITORY_URL = $(REPOSITORY_BASE_URL)/tree/$(TRAVIS_TAG)
-PRESENTATION_URL = https://$(REPOSITORY_OWNER).github.io/$(REPOSITORY_NAME)/$(TRAVIS_TAG)
-else
-ifdef TRAVIS_BRANCH
-ifneq ($(TRAVIS_BRANCH), main)
-REPOSITORY_URL = $(REPOSITORY_BASE_URL)/tree/$(TRAVIS_BRANCH)
-PRESENTATION_URL = https://$(REPOSITORY_OWNER).github.io/$(REPOSITORY_NAME)/$(TRAVIS_BRANCH)
-endif
-endif
-endif
-export PRESENTATION_URL CURRENT_UID REPOSITORY_URL REPOSITORY_BASE_URL
+export PRESENTATION_URL CURRENT_UID REPOSITORY_URL
+
+## Docker Buildkit is enabled for faster build and caching of images
+DOCKER_BUILDKIT ?= 1
+COMPOSE_DOCKER_CLI_BUILD ?= 1
+export DOCKER_BUILDKIT COMPOSE_DOCKER_CLI_BUILD
 
 all: clean build verify
 
@@ -35,13 +26,28 @@ $(DIST_DIR):
 
 verify:
 	@echo "Verify disabled"
+## TODO: ensure that it works again
+# @docker run --rm \
+# 	-v $(DIST_DIR):/dist \
+# 	--user $(CURRENT_UID) \
+# 	18fgsa/html-proofer \
+# 		--check-html \
+# 		--http-status-ignore "999" \
+# 		--url-ignore "/localhost:/,/127.0.0.1:/,/$(PRESENTATION_URL)/" \
+#     	/dist/index.html
 
-serve: clean $(DIST_DIR)
-	@docker-compose up --build --force-recreate serve
+serve: clean $(DIST_DIR) prepare qrcode
+	@docker-compose up --force-recreate serve
 
-shell: $(DIST_DIR)
-	@docker-compose up --build --force-recreate -d wait
-	@docker-compose exec --user root wait sh
+shell: $(DIST_DIR) prepare
+	@CURRENT_UID=0 docker-compose run --entrypoint=sh --rm serve
+
+dependencies-lock-update: $(DIST_DIR) prepare
+	@CURRENT_UID=0 docker-compose run --entrypoint=npm --rm serve install --package-lock
+
+dependencies-update: $(DIST_DIR) prepare
+	@CURRENT_UID=0 docker-compose run --entrypoint=ncu --workdir=/app/npm-packages --rm serve -u
+	@make -C $(CURDIR) dependencies-lock-update
 
 $(DIST_DIR)/index.html: build
 
@@ -49,19 +55,17 @@ pdf: $(DIST_DIR)/index.html
 	@docker run --rm -t \
 		-v $(DIST_DIR):/slides \
 		--user $(CURRENT_UID) \
-		astefanutti/decktape:2.9 \
+		astefanutti/decktape:3.4.1 \
 		/slides/index.html \
 		/slides/slides.pdf \
-		--size='2048x1536'
-
-deploy: pdf
-	@bash $(CURDIR)/scripts/travis-gh-deploy.sh
+		--size='2048x1536' \
+		--pause 0
 
 clean:
 	@docker-compose down -v --remove-orphans
 	@rm -rf $(DIST_DIR)
 
 qrcode:
-	@docker-compose up --build --force-recreate qrcode
+	@docker-compose run --entrypoint=/app/node_modules/.bin/qrcode --rm serve -t png -o /app/content/media/qrcode.png $(PRESENTATION_URL)
 
-.PHONY: all build verify serve deploy qrcode pdf
+.PHONY: all build verify serve qrcode pdf prepare dependencies-update dependencies-lock-update
