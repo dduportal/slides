@@ -25,19 +25,17 @@ $(DIST_DIR):
 	mkdir -p $(DIST_DIR)
 
 verify:
-	@echo "Verify disabled"
-## TODO: ensure that it works again
-# @docker run --rm \
-# 	-v $(DIST_DIR):/dist \
-# 	--user $(CURRENT_UID) \
-# 	18fgsa/html-proofer \
-# 		--check-html \
-# 		--http-status-ignore "999" \
-# 		--url-ignore "/localhost:/,/127.0.0.1:/,/$(PRESENTATION_URL)/" \
-#     	/dist/index.html
+	@docker run --rm \
+		-v $(DIST_DIR):/dist \
+		--user $(CURRENT_UID) \
+		18fgsa/html-proofer \
+			--check-html \
+			--http-status-ignore "999" \
+			--url-ignore "/localhost:/,/127.0.0.1:/,/$(PRESENTATION_URL)/,/github.com\/$(REPOSITORY_OWNER)\/slides\/tree/" \
+			/dist/index.html
 
 serve: clean $(DIST_DIR) prepare qrcode
-	@docker-compose up --force-recreate serve
+	@docker-compose up --build --force-recreate serve
 
 shell: $(DIST_DIR) prepare
 	@CURRENT_UID=0 docker-compose run --entrypoint=sh --rm serve
@@ -55,6 +53,8 @@ pdf: $(DIST_DIR)/index.html
 	@docker run --rm -t \
 		-v $(DIST_DIR):/slides \
 		--user $(CURRENT_UID) \
+		--read-only=true \
+		--tmpfs=/tmp \
 		astefanutti/decktape:3.4.1 \
 		/slides/index.html \
 		/slides/slides.pdf \
