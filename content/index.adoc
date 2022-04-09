@@ -1,6 +1,4 @@
-
-
-= Introduction à l'approche "Agile"
+= Titre
 include::./attributes.adoc[]
 
 [.small]
@@ -14,8 +12,10 @@ Présentation disponible en PDF: {presentationUrl}/slides.pdf[{presentationUrl}/
 [{invert}]
 == Damien DUPORTAL
 
-* Freelancer
-* Consultant @ link:https://www.ovh.com/fr/[OVHCloud]
+* Lead Engineer at link:https://www.cloudbees.com/[CloudBees]
+** Site Reliability Engineering pour la plateforme open source du projet link:https://jenkins.io[Jenkins]
+
+* Freelancer / Consultant (CI/CD & cloud tooling)
 
 * Me contacter :
 ** +++<span class="fa fa-envelope"></span>+++ damien.duportal+pro <chez> gmail.com
@@ -23,83 +23,11 @@ Présentation disponible en PDF: {presentationUrl}/slides.pdf[{presentationUrl}/
 ** link:https://twitter.com/DamienDuportal[+++<span class="fab fa-twitter"></span>+++ @DamienDuportal,window=_blank]
 
 
-== Au Menu
+== Menu
 
-1. Quel sont les problèmes de la gestion de projet ?
-2. Approches et méthodes Agiles dans le numérique
-3. Quelques exemples concrets
-
-== Quel sont les problèmes de la gestion de projet ?
-
-== !
-
-image::submarine.jpg[width=500]
-
-image::tunnel.jpg[width=500]
-
-== Le cycle en V
-
-image::cycle-v.jpg[width=800]
-
-== En résumé
-
-image::what-customer-want.jpg[]
-
-== Approches et méthodes Agiles dans le numérique
-
-== Manifeste Agile
-
-- **Individus et interactions** plus que processus outils
-- **Logiciels opérationnels** plus qu’une documentation exhaustive
-- **Collaboration** avec les clients plus que la négociation contractuel
-- **Adaptation au changement** plus que le suivi d’un plan
-
-[.small]
-https://agilemanifesto.org/iso/fr/manifesto.html[]
-
-== Produit Minimum Viable
-
-(aka. "MVP" - "Minimum Viable Product")
-
-image::mvp.png[width=700]
-
-== Approche Agile
-
-image::agile.png[width=800]
-
-== Quelques exemples concrets
-
-== SCRUM
-
-image::scrum.jpg[]
-
-== Kanban
-
-image::kanban.jpg[width=800]
-
-== Concept Ecologis (!)
-
-(aka. "Faire de l'Agile sans le savoir")
-
-image::concept-ecologis.jpg[width=800]
-
-[.small]
-https://concept-ecologis.be/[]
-
-== Interessés ?
-
-image::arexo-logo.png[]
-
-Basés à St-Georges-sur-Meuse : link:https://arexo.be/[]
-
-== Sources
-
-- https://arexo.be/
-- https://blog.trello.com/fr/methode-agile-scrum-gestion-projet
-- https://fr.wikipedia.org/wiki/M%C3%A9thode_agile
-- https://slideplayer.fr/slide/14372463/
-- https://agileforall.com/resources/introduction-to-agile/
-- https://agiliste.fr/introduction-methodes-agiles/
+1. Partie 1
+2. Partie 2
+3. Pa
 
 [{invert}]
 == Merci !
