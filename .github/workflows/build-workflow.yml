@@ -14,8 +14,9 @@ on:
 
 env:
   ## Override default value for Docker cached image
-  IMAGE_CACHE_NAME_ORIGINAL: "ghcr.io/${{ github.repository_owner }}/slides:latest"
+  IMAGE_CACHE_NAME_ORIGINAL: "ghcr.io/${{ github.repository }}:latest"
   PRINCIPAL_BRANCH: "master"
+  REPOSITORY_URL: "https://github.com/${{ github.repository }}"
 
 jobs:
   build-slides:
@@ -30,6 +31,19 @@ jobs:
       - name: downcase IMAGE_CACHE_NAME
         run: |
           echo "IMAGE_CACHE_NAME=${IMAGE_CACHE_NAME_ORIGINAL,,}" >>${GITHUB_ENV}
+      ## This step generates the full presentation URL on github pages, based on the context (github owner, repo, branch)
+      ## Please note that the pull_request case is treated differently (using target branch instead of branch.tag ref)
+      - name: Generate PRESENTATION_URL
+        if: github.event_name != 'pull_request'
+        run: |
+          echo "PRESENTATION_URL=https://${{ github.repository_owner }}.github.io/$(basename ${{ github.repository }})/${{ github.ref_name }}" >> $GITHUB_ENV
+      - name: Generate PRESENTATION_URL for pull request
+        if: github.event_name == 'pull_request'
+        run: |
+          echo "PRESENTATION_URL=https://${{ github.repository_owner }}.github.io/$(basename ${{ github.repository }})/${{ github.base_ref }}" >> $GITHUB_ENV
+      - name: Prints generated PRESENTATION_URL (for audit purpose)
+        run: |
+          echo "PRESENTATION_URL=${PRESENTATION_URL}"
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v1
         with:
@@ -38,9 +52,6 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: "Build"
         run: make build
-#       - name: "Caching for later builds"
-#         if: github.event_name == 'push' && github.event_name != 'pull_request'
-#         run: docker push "${IMAGE_CACHE_NAME_NORMALIZED}"
       - name: "Verify"
         run: make verify
       - name: "Upload dist/ as artefact"
