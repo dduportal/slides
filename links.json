@@ -1,0 +1,58 @@
+[
+  {
+    "name": "HD4You: Introduction à la Sécurité du Numerique 🇫🇷 (2020)",
+    "link": "2020-secu-numerique"
+  },
+  {
+    "name": "HD4You: Introduction à l’approche Agile 🇫🇷 (2020)",
+    "link": "2020-intro-agile"
+  },
+  {
+    "name": "GDG Lille: Tests de bout en bout en shell avec “bats” 🇫🇷 (2019)",
+    "link": "gdg-lille-2019"
+  },
+  {
+    "name": "TuleapCon 2018, Lyon: Jenkins BlueOcean Pipeline Editor with Tuleap 🇫🇷 (2018)",
+    "link": "jenkins-tuleapcon-2018"
+  },
+  {
+    "name": "Zenika Nightclazz Lille: Jenkins, la nouvelle génération 🇫🇷 (2017)",
+    "link": "zenika-nightclazz-lille-2017"
+  },
+  {
+    "name": "DevFest Lille 2017: Workshop on Jenkins, BlueOcean and Declarative Pipelines 🇬🇧 (2017)",
+    "link": "devfest-lille-2017"
+  },
+  {
+    "name": "Brussels Jenkins Meetup: Talk on Jenkins, BlueOcean and Declarative Pipelines for CI 🇬🇧 (2017)",
+    "link": "bxl-jam-201706/slides-Jenkins, BlueOcean and Declarative Pipelines.html"
+  },
+  {
+    "name": "Grenoble SnowCamp IO: Bâtissons ensemble un pipeline avec Jenkins et Docker 🇫🇷 (2017)",
+    "link": "snowcampio-2017"
+  },
+  {
+    "name": "Liege WaJUG: GitLab CI vs. Jenkins 🇬🇧 (2017)",
+    "link": "https://oufti-playground.github.io/wajug-talk-devops"
+  },
+  {
+    "name": "Jenkins Moderne et Livraison Continue: écrivons ensemble des Pipeline Déclaratifs pour votre application 🇫🇷 (2017)",
+    "link": "mixit-2017-jenkins-pipeline/slides.html"
+  },
+  {
+    "name": "Belgium Docker Meetup: Docker Swarm on Raspberry PIs Workshop 🇬🇧 (2016)",
+    "link": "docker-meetup-brussels-20160210"
+  },
+  {
+    "name": "Grenoble Docker Meetup: Docker Swarm 🇫🇷 (2015)",
+    "link": "docker-meetup-grenoble-20150608"
+  },
+  {
+    "name": "Lyon MixIT: Devbox in Docker 🇫🇷 (2015)",
+    "link": "mixit-2015-devbox-docker"
+  },
+  {
+    "name": "Lyon Docker meetup: Pets vs Cattle 🇫🇷 (2014)",
+    "link": "docker-meetup-lyon-20140528"
+  }
+]
