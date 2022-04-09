@@ -28,13 +28,13 @@ verify: ## Verifies the generateed HTML
 	@docker run --rm \
 		-v $(DIST_DIR):/dist \
 		--user $(CURRENT_UID) \
-		18fgsa/html-proofer \
+		klakegg/html-proofer:3.19.2 \
 			--check-html \
 			--http-status-ignore "999" \
 			--url-ignore "/localhost:/,/127.0.0.1:/,/$(PRESENTATION_URL)/,/github.com\/$(REPOSITORY_OWNER)\/slides\/tree/" \
 			/dist/index.html
 
-serve: clean $(DIST_DIR) prepare qrcode ## Starts a local web server to serve the slides (localhost:8000) 
+serve: clean $(DIST_DIR) prepare qrcode ## Starts a local web server to serve the slides (localhost:8000)
 	@docker-compose up --build --force-recreate serve
 
 shell: $(DIST_DIR) prepare ## Starts the server and opens a shell into it
