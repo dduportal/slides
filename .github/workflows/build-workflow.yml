@@ -15,7 +15,7 @@ on:
 env:
   ## Override default value for Docker cached image
   IMAGE_CACHE_NAME_ORIGINAL: "ghcr.io/${{ github.repository }}:latest"
-  PRINCIPAL_BRANCH: "master"
+  PRINCIPAL_BRANCH: "main"
   REPOSITORY_URL: "https://github.com/${{ github.repository }}"
 
 jobs:
