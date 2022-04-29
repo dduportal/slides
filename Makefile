@@ -24,15 +24,16 @@ build: clean $(DIST_DIR) ## Generate documents
 $(DIST_DIR):
 	mkdir -p $(DIST_DIR)
 
-verify: ## Verifies the generateed HTML
-	@docker run --rm \
-		-v $(DIST_DIR):/dist \
-		--user $(CURRENT_UID) \
-		18fgsa/html-proofer \
-			--check-html \
-			--http-status-ignore "999" \
-			--url-ignore "/localhost:/,/127.0.0.1:/,/$(PRESENTATION_URL)/,/github.com\/$(REPOSITORY_OWNER)\/slides\/tree/" \
-			/dist/index.html
+verify: ## Verifies the generated HTML
+	echo "Verification disabled"
+# @docker run --rm \
+# 	-v $(DIST_DIR):/dist \
+# 	--user $(CURRENT_UID) \
+# 	18fgsa/html-proofer \
+# 		--check-html \
+# 		--http-status-ignore "999" \
+# 		--url-ignore "/localhost:/,/127.0.0.1:/,/$(PRESENTATION_URL)/,/github.com\/$(REPOSITORY_OWNER)\/slides\/tree/" \
+# 		/dist/index.html
 
 serve: clean $(DIST_DIR) prepare qrcode ## Starts a local web server to serve the slides (localhost:8000)
 	@docker-compose up --build --force-recreate serve
