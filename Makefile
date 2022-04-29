@@ -1,8 +1,8 @@
 CURRENT_UID = $(shell id -u):$(shell id -g)
 DIST_DIR ?= $(CURDIR)/dist
 
-REPOSITORY_URL = https://github.com/dduportal/slides
-PRESENTATION_URL = https://dduportal.github.io/slides/master
+REPOSITORY_URL ?= https://github.com/dduportal/slides
+PRESENTATION_URL ?= https://dduportal.github.io/slides/main
 
 export PRESENTATION_URL CURRENT_UID REPOSITORY_URL
 
@@ -11,7 +11,7 @@ DOCKER_BUILDKIT ?= 1
 COMPOSE_DOCKER_CLI_BUILD ?= 1
 export DOCKER_BUILDKIT COMPOSE_DOCKER_CLI_BUILD
 
-all: clean build verify
+all: clean build verify pdf
 
 # Generate documents inside a container, all *.adoc in parallel
 build: clean $(DIST_DIR) ## Generate documents
@@ -28,7 +28,7 @@ verify: ## Verifies the generateed HTML
 	@docker run --rm \
 		-v $(DIST_DIR):/dist \
 		--user $(CURRENT_UID) \
-		klakegg/html-proofer:3.19.2 \
+		18fgsa/html-proofer \
 			--check-html \
 			--http-status-ignore "999" \
 			--url-ignore "/localhost:/,/127.0.0.1:/,/$(PRESENTATION_URL)/,/github.com\/$(REPOSITORY_OWNER)\/slides\/tree/" \
