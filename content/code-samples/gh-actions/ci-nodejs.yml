@@ -1,0 +1,24 @@
+# tag::common[]
+name: Bonjour
+on:
+  - push
+jobs:
+  dire_bonjour:
+    runs-on: ubuntu-22.04
+# tag::container[]
+    container:
+      image: ghcr.io/dduportal/esgi-gitpod
+      options: --user=root
+# end::container[]
+    steps:
+      - uses: actions/checkout@v3 # Récupère le contenu du dépôt correspondant au commit du workflow en cours
+# end::common[]
+# tag::setupnode[]
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 19
+# end::setupnode[]
+#tag::initial[]
+      - run: npm install
+      - run: npm run lint
+#end::initial[]

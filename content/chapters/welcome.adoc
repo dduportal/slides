@@ -1,0 +1,32 @@
+[{invert}]
+= Bonjour !
+
+Hello :wave:
+
+[.small]
+Use the bottom arrow for next slide ⬇️
+
+[{invert}]
+== Damien DUPORTAL
+
+* link:https://touilleur-express.fr/2022/07/17/devenir-staff-engineer/[Staff Software Engineer, window="_blank"] at https://www.cloudbees.com[CloudBees,window="_blank"] for the link:https://www.jenkins.io/[Jenkins,window="_blank"] project 👨🏻‍⚖️
+* Freelancer
+
+* Get in touch:
+** {author_mail}
+** link:https://github.com/dduportal[{github_icon} dduportal,window="_blank"]
+** link:https://www.linkedin.com/in/damien-duportal-ab70b524/[{linkedin_icon} Damien Duportal,window=_blank]
+
+== Plan
+
+video::plan.mp4[width="200",options="autoplay,loop,nocontrols"]
+
+* What is the problem?
+* RevealJS for online slides
+* Why Asciidoctor?
+* Testing presentations / documentation?
+* Use an abuse `docker compose`
+
+
+[.small]
+Next section: right arrow ➡️

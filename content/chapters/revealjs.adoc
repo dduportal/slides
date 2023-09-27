@@ -1,0 +1,30 @@
+[{invert}]
+= RevealJS
+
+== RevealJS
+
+* "The HTML Presentation Framework"
+
+* https://revealjs.com/[]
+
+* A lot of features extended by plugins
+
+* Modern HTML/CSS support
+
+* Online editor (WYSIWIG)
+
+== Speaker notes
+
+Try "s" key
+
+== Code Support
+
+* Syntax highlighting, copy and paste, etc.
+
+[source,yaml]
+----
+---
+services:
+  jenkins:
+    image: jenkins/jenkins:lts-jdk21
+----

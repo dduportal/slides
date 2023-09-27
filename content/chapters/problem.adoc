@@ -1,0 +1,28 @@
+[{invert}]
+= What is the problem?
+
+== Peer Review
+
+I want slides that can be reviewed and verified
+
+== Ring a Bell?
+
+image::pr-process.png[]
+
+== Focus
+
+1. Content => "what message to pass?"
+2. Experience => "is the content valid?"
+3. Design => "detail or you're not paying attention"
+
+== Rendering
+
+* HTML is the de-facto standard (everywhere)
+* Async and remote
+* PDF alternative
+
+== Contribute Back
+
+* FOSS
+* Creative Commons
+* Propose the change you want

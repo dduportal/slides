@@ -3,123 +3,57 @@ name: Slides Workflow
 on:
   create:
     tags:
-      - "*"
+      - '*'
   push:
     branches-ignore:
-      - gh_pages
+      - gh-pages
     tags:
-      - "*"
+      - '*'
   pull_request:
   workflow_dispatch:
 
 env:
-  ## Override default value for Docker cached image
-  IMAGE_CACHE_NAME_ORIGINAL: "ghcr.io/${{ github.repository }}:latest"
-  PRINCIPAL_BRANCH: "main"
-  REPOSITORY_URL: "https://github.com/${{ github.repository }}"
+  REPOSITORY_URL: https://github.com/${{ github.repository_owner }}/${{ github.repository }}
+  PRESENTATION_URL: https://${{ github.repository_owner }}.github.io/${{ github.repository }}/${{ github.ref_name }}
 
 jobs:
   build-slides:
-    name: "Build Slides"
+    name: 'Build Slides'
     runs-on: ubuntu-latest
-    permissions:
-      packages: write ## Required to allow "docker push" on GHCR
     steps:
-      - name: "Checkout"
-        uses: actions/checkout@v3
-      ## This step is a trick to ensure that the docker image name is normalized (lower cased, etc.) into the env. variable IMAGE_CACHE_NAME
-      - name: downcase IMAGE_CACHE_NAME
+      - name: 'Check environment'
         run: |
-          echo "IMAGE_CACHE_NAME=${IMAGE_CACHE_NAME_ORIGINAL,,}" >>${GITHUB_ENV}
-      ## This step generates the full presentation URL on github pages, based on the context (github owner, repo, branch)
-      ## Please note that the pull_request case is treated differently (using target branch instead of branch.tag ref)
-      - name: Generate PRESENTATION_URL
-        if: github.event_name != 'pull_request'
-        run: |
-          echo "PRESENTATION_URL=https://${{ github.repository_owner }}.github.io/$(basename ${{ github.repository }})/${{ github.ref_name }}" >> $GITHUB_ENV
-      - name: Generate PRESENTATION_URL for pull request
-        if: github.event_name == 'pull_request'
-        run: |
-          echo "PRESENTATION_URL=https://${{ github.repository_owner }}.github.io/$(basename ${{ github.repository }})/${{ github.base_ref }}" >> $GITHUB_ENV
-      - name: Prints generated PRESENTATION_URL (for audit purpose)
-        run: |
-          echo "PRESENTATION_URL=${PRESENTATION_URL}"
-      - name: Login to GitHub Container Registry
-        uses: docker/login-action@v1
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: "Build"
+          docker compose version
+          echo $REPOSITORY_URL
+          echo $PRESENTATION_URL
+      - name: 'Checkout'
+        uses: actions/checkout@master
+      - name: 'Build'
         run: make build
-      - name: "Verify"
+      - name: PDF on main branch
+        run: make pdf # Reuses the 'make build' steps
+      - name: 'Verify'
         run: make verify
-      - name: "Upload dist/ as artefact"
-        uses: actions/upload-artifact@v2
+      - name: 'Upload dist/ as artefact'
+        uses: actions/upload-artifact@v3
         with:
           name: dist
           path: dist/
 
-  build-pdf:
-    name: "Build PDF"
-    runs-on: ubuntu-latest
-    # Only generate PDF when pushing code on a branch of the repository
-    if: github.event_name == 'push'
-    steps:
-      - name: "Checkout"
-        uses: actions/checkout@master
-      - name: Login to GitHub Container Registry
-        uses: docker/login-action@v1
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: "Build"
-        run: make build
-      - name: PDF on main branch
-        if: github.ref == 'refs/heads/${{ env.PRINCIPAL_BRANCH }}'
-        run: make pdf
-      - name: "Upload dist/slides.pdf as artefact"
-        uses: actions/upload-artifact@v2
-        with:
-          name: pdf
-          path: dist/slides.pdf
-
   deploy:
     runs-on: ubuntu-latest
-    needs: [build-slides, build-pdf]
+    needs: [build-slides]
     # Only run deploy when pushing code on a branch of the repository
     if: github.event_name == 'push'
     steps:
-      - name: "Download dist/ Artefacts"
-        uses: actions/download-artifact@v2
-        with:
-          name: dist
-          path: ./dist
-      - name: "Download dist/slides.pdf artefact"
-        uses: actions/download-artifact@v2
-        with:
-          name: pdf
-          path: ./dist
-      - name: Get tag value
-        if: startsWith(github.ref, 'refs/tags/')
-        id: tags
-        run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
-      - name: "Deploy Tag"
-        if: startsWith(github.ref, 'refs/tags/')
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          destination_dir: ${{ steps.tags.outputs.tag }}
-      - name: Get branch name
-        if: startsWith(github.ref, 'refs/heads/')
-        id: branches
-        run: echo ::set-output name=branch::${GITHUB_REF#refs/heads/}
-      - name: "Deploy Main Branch"
-        if: startsWith(github.ref, 'refs/heads/')
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          destination_dir: ${{ steps.branches.outputs.branch }}
+    - name: 'Download dist/ Artefacts'
+      uses: actions/download-artifact@v3
+      with:
+        name: dist
+        path: ./dist
+    - name: 'Deploy to GitHub Pages'
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist
+        destination_dir: ${{ github.ref_name }}/

@@ -1,0 +1,16 @@
+[{invert}]
+= Asciidoctor
+
+== Say no to Markdown
+
+https://github.github.com/gfm/
+
+> GitHub Flavored Markdown, often shortened as GFM, is the dialect of Markdown that is currently supported for user content on GitHub.com and GitHub Enterprise.
+
+== Asciidoctor
+
+https://asciidoctor.org/[]
+
+> A fast text processor & publishing toolchain for converting AsciiDoc to HTML5, DocBook & more.
+
+== TL;DR;

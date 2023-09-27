@@ -1,42 +1,45 @@
-= Titre
+= Post-Mortem
 include::./attributes.adoc[]
 
-[.small]
-Présentation disponible à l’adresse: {presentationUrl}[{presentationUrl}]
+[.title]
+of my Homemade Slides Framework
 
 image::qrcode.png["QRCode to this presentation",height=150]
 
 [.small]
-Présentation disponible en PDF: {presentationUrl}/slides.pdf[{presentationUrl}/slides.pdf]
+* Online: {presentationUrl}[{presentationUrl}]
+* PDF: link:slides.pdf[{pdf_icon} Click here,window="_blank"]
+* Source: link:{repositoryUrl}[{github_icon} {repositoryUrl},window="_blank"]
+
+== How to use?
+
+* Use the 4 arrows (on screen or keyboard)
+** Left/Right: change section
+** Top/Down: change slide in a given section
+* "o" for "*Overview*"
+
+// Welcome
+include::./chapters/welcome.adoc[leveloffset=1]
+
+// Problem
+include::./chapters/problem.adoc[leveloffset=1]
+
+// RevealJS
+include::./chapters/revealjs.adoc[leveloffset=1]
+
+// Asciidoctor
+include::./chapters/asciidoctor.adoc[leveloffset=1]
+
+// Testing
+include::./chapters/testing.adoc[leveloffset=1]
+
+// Testing
+include::./chapters/docker-compose.adoc[leveloffset=1]
 
 [{invert}]
-== Damien DUPORTAL
+== Thanks !
 
-* Lead Engineer at link:https://www.cloudbees.com/[CloudBees]
-** Site Reliability Engineering pour la plateforme open source du projet link:https://jenkins.io[Jenkins]
-
-* Freelancer / Consultant (CI/CD & cloud tooling)
-
-* Me contacter :
-** +++<span class="fa fa-envelope"></span>+++ damien.duportal+pro <chez> gmail.com
-** link:https://www.linkedin.com/in/damien-duportal-ab70b524/[+++<span class="fab fa-linkedin"></span>+++ Damien Duportal,window=_blank]
-** link:https://twitter.com/DamienDuportal[+++<span class="fab fa-twitter"></span>+++ @DamienDuportal,window=_blank]
-
-
-== Menu
-
-1. Partie 1
-2. Partie 2
-3. Pa
-
-[{invert}]
-== Merci !
-
-+++<span class="fa fa-envelope"></span>+++ damien.duportal+pro <chez> gmail.com
-
-link:https://twitter.com/DamienDuportal[+++<span class="fab fa-twitter"></span>+++ @DamienDuportal,window=_blank]
-
-link:https://www.linkedin.com/in/damien-duportal-ab70b524/[+++<span class="fab fa-linkedin"></span>+++ Damien Duportal,window=_blank]
+{author_mail}
 
 [.small]
 link:{presentationUrl}[Slides: {presentationUrl}]
@@ -44,4 +47,4 @@ link:{presentationUrl}[Slides: {presentationUrl}]
 image::qrcode.png["QRCode to this presentation",height=150]
 
 [.small]
-link:{repositoryUrl}[Source on +++<span class="fab fa-github"></span>+++: {repositoryUrl}]
+link:{repositoryUrl}[Source on {github_icon} : {repositoryUrl},window="_blank"]
