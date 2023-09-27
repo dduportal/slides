@@ -19,7 +19,7 @@ jobs:
     steps:
       - name: 'Set Environment'
         run: |
-          echo "REPOSITORY_URL=https://github.com/${{ github.repository_owner }}/${{ github.repository }}" >> "$GITHUB_ENV"
+          echo "REPOSITORY_URL=https://github.com/${{ github.repository }}" >> "$GITHUB_ENV"
           echo "PRESENTATION_URL=https://${{ github.repository_owner }}.github.io/${GITHUB_REPOSITORY#$GITHUB_REPOSITORY_OWNER/}/${{ github.ref_name }}" >> "$GITHUB_ENV"
       - name: 'Check environment'
         run: |
